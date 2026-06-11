@@ -1,0 +1,94 @@
+<!-- CS META: 4:5 --><!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Poke-Match</title>
+    <link rel="icon" type="image/webp" href="/img/ball.webp" />
+    <link rel="stylesheet" href="/style/main.css" />
+    <link rel="stylesheet" href="/style/interfaces.css" />
+    <link rel="stylesheet" href="/style/game.css" />
+    <script src="/js/Color.js"></script>
+    <script src="/js/Events.js"></script>
+    <script src="/js/Frameloop.js"></script>
+    <script src="/js/MatchGame.js"></script>
+    <script src="/js/gui_manager.js"></script>
+    <script type="module" src="/js/particle-runner.js"></script>
+  </head>
+  <body>
+    <div class="game_container tile">
+      <!-- Title Scene -->
+      <div id="s-start" class="content">
+        <img class="logo" draggable="false" src="img/title-card.png" />
+        <button id="game-start">Game Start</button>
+        <button id="settings">Settings</button>
+      </div>
+      <!-- Settings Scene -->
+      <div id="s-settings" class="content">
+        <div class="panel">
+          <div class="panel-header">-= Settings =-</div>
+          <div class="container">
+            <div class="label">Difficulty</div>
+            <div id="difficulty-select" class="flex-container">
+              <button id="easy">Easy</button>
+              <button id="med">Medium</button>
+              <button id="hard">Hard</button>
+            </div>
+          </div>
+          <div class="container">
+            <div class="label">Theme</div>
+            <input max="180" min="-180" type="range" id="theme-slider" />
+          </div>
+          <button class="exit-btn">EXIT</button>
+        </div>
+      </div>
+      <!-- Game Scene -->
+      <div id="s-game" class="content sticky-content">
+        <div class="panel sticky-ui">
+          <div class="flex-container">
+            <div class="label ui-display border">
+              <span class="display" id="difficulty-display"
+                >Difficulty: XX</span
+              >
+              <span class="middle display">
+                <img class="clock-icon" src="img/clock.png" draggable="false" />
+                <span>Remaining: </span>
+                <b id="timer-value">XX</b>
+              </span>
+            </div>
+            <div class="ui-display-right">
+              <div class="middle display">
+                <div class="label ui-display">
+                  <span>Total Clicks: <b id="click-count">XX</b></span>
+                  <span>Matches: <b id="match-count">XX/MM</b></span>
+                  <span>Matches Left: <b id="card-count">XX</b></span>
+                </div>
+              </div>
+            </div>
+            <div class="ui-display-right">
+              <button nogrow class="home-btn">HOME</button>
+              <button nogrow class="reset-btn">RESTART</button>
+            </div>
+          </div>
+        </div>
+        <div class="game-grid">
+          <div style="display: none" class="card">
+            <img src="/img/ball.webp" draggable="false" />
+          </div>
+          <!-- Filled by MatchGame.js -->
+        </div>
+      </div>
+      <!-- Win/Lose Scene -->
+      <div id="s-game-end" class="content">
+        <canvas class="particles"></canvas>
+        <div class="panel">
+          <div class="panel-header" id="lose-text">-= You Lose =-</div>
+          <div class="panel-header" id="win-text">-= You Win =-</div>
+          <div class="container endscreen">
+            <button id="home">HOME</button>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
